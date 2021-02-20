@@ -1,18 +1,18 @@
-image: Ubuntu1804  # образ для сборки
+image: Ubuntu1804
 
 branches:
   only:
     - master
+    - v2
 
 build: off
 
 install:
   # запускаем SUT (запоминаем информацию о процессе в переменной $App)
-  - ps: $App = Start-Process -FilePath java -ArgumentList "-jar ./artifacts/app-card-delivery.jar" -PassThru
+  -  java -jar ./artifacts/app-card-delivery.jar" &
 
 build_script:
   - chmod +x gradlew
-  - ps: ./gradlew test --info "-Dselenide.headless=true"  # стартуем Selenide в Headless-режиме 
+  - ./gradlew test --info "-Dselenide.headless=true"  # стартуем Selenide в Headless-режиме
 
-on_finish:
-  - ps: Stop-Process -Id $App.Id  # оставливаем SUT
+
