@@ -3,6 +3,7 @@ image: Ubuntu1804  # образ для сборки
 branches:
   only:
     - master
+    - v2
 
 build: off
 
