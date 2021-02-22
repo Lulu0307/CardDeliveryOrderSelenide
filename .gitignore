@@ -39,5 +39,5 @@ out/
 
 ### Exclusions ###
 !gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**
-!**/src/test/**
+!ru.netology/src/main/**
+!ru.netology/src/test/**

@@ -1,6 +1,7 @@
 
 import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.Keys;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -16,11 +17,12 @@ public class TestDeliveryApp {
     private String deliveryDate = date.plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
 
     @Test
-    void shouldSendOrder(){
+    void shouldSendOrder() {
         open("http://localhost:9999");
         SelenideElement form = $("[id = root]");
         form.$("[data-test-id=city] input").setValue("Кемерово");
-        form.$("[data-test-id = date] input").setValue("22.02.2021");
+        form.$("[data-test-id = date] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
+        form.$("[data-test-id = date] input").setValue(deliveryDate);
         form.$("[data-test-id = name] input").setValue("Ваня Ванин");
         form.$("[data-test-id = phone] input").setValue("+78005553535");
         form.$("[data-test-id = agreement]").click();
