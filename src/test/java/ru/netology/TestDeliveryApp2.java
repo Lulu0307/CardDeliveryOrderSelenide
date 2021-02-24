@@ -1,3 +1,5 @@
+package ru.netology;
+
 import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
